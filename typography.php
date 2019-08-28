@@ -27,7 +27,8 @@ if ( !class_exists( 'Typography' ) ) {
 
 		public function __construct() {
 			$this->register_options();
-			add_action('wp_enqueue_scripts', array($this, 'enqueue_fonts'));
+			add_action( 'wp_enqueue_scripts', array($this, 'enqueue_fonts'));
+            add_action( 'enqueue_block_editor_assets', array($this, 'enqueue_fonts') );
             add_action( 'enqueue_block_editor_assets', array($this, 'enqueue_block_scripts') );
 			$this->init();
 		}
