@@ -29,6 +29,11 @@ module.exports = (env, argv) => {
         })
     ];
     config.module.rules.push({
+        test: /.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+    });
+    config.module.rules.push({
         test: /\.scss$/i,
         use: [
             // Creates `style` nodes from JS strings

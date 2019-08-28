@@ -7,7 +7,7 @@
  * Author URI:      rubenmadila.com
  * Text Domain:     typography
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.1.1
  *
  * @package         Typography
  */
@@ -28,8 +28,26 @@ if ( !class_exists( 'Typography' ) ) {
 		public function __construct() {
 			$this->register_options();
 			add_action('wp_enqueue_scripts', array($this, 'enqueue_fonts'));
+            add_action( 'enqueue_block_editor_assets', array($this, 'enqueue_block_scripts') );
 			$this->init();
 		}
+
+        /**
+         * Enqueue the block's assets for the editor.
+         *
+         * wp-blocks:  The registerBlockType() function to register blocks.
+         * wp-element: The wp.element.createElement() function to create elements.
+         * wp-i18n:    The __() function for internationalization.
+         *
+         * @since 1.0.0
+         */
+        public function enqueue_block_scripts() {
+            wp_enqueue_script(
+                'typography-enqueue_block_scripts', // Unique handle.
+                plugins_url( 'assets/scripts.js', __FILE__ ), // block.js: We register the block here.
+                array( 'wp-blocks', 'wp-i18n', 'wp-element' ) // Dependencies, defined above.
+            );
+        }
 
 		public function register_options() {
 			foreach($this->settings as $setting_group => $settings) {
