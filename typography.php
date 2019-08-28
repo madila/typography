@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Typography
- * Plugin URI:      typography.rubenmadila.com
+ * Plugin URI:      https://github.com/madila/typography
  * Description:     A typography plugin for WordPress
  * Author:          Ruben Madila
  * Author URI:      rubenmadila.com
